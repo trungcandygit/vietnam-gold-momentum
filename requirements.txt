@@ -1,5 +1,8 @@
-pandas>=2.0
-numpy>=1.24
-scipy>=1.10
-openpyxl>=3.1
-matplotlib>=3.7
+# R packages required to run the analysis scripts (00-06).
+# Install with: install.packages(c("data.table", "readxl", "jsonlite", "ggplot2", "patchwork", "scales"))
+data.table
+readxl
+jsonlite
+ggplot2
+patchwork
+scales
