@@ -1,8 +1,6 @@
-# R packages required to run the analysis scripts (00-06).
-# Install with: install.packages(c("data.table", "readxl", "jsonlite", "ggplot2", "patchwork", "scales"))
+# R packages required to run the analysis scripts (00-08).
+# Install with: install.packages(c("data.table", "readxl", "jsonlite", "sandwich"))
 data.table
 readxl
 jsonlite
-ggplot2
-patchwork
-scales
+sandwich

@@ -42,7 +42,7 @@ tabs$R_policy_spread <- sp_tab
 inv_vol_w <- function(set) { vol <- sapply(set, function(k) { r <- real_ret(k); v <- rep(NA_real_, TT); for (t in 252:TT) { x <- r[(t - 251):(t - 1)]; if (sum(!is.na(x)) > 200) v[t] <- sd(x, na.rm = TRUE) }; v })
   w <- 1 / vol; w[is.na(w)] <- 0; w <- w / rowSums(w); w[is.nan(w)] <- 1 / length(set); w }
 wv <- inv_vol_w(NAMES)
-wt_ret <- function(mat, w) { mat2 <- mat; mat2[is.na(mat2)] <- 0; avail <- !is.na(mat); ww <- w * avail; ww <- ww / rowSums(ww); ww[is.nan(ww)] <- 0; rowSums(mat2 * ww) }
+wt_ret <- function(mat, w) { mat2 <- mat; mat2[is.na(mat2)] <- 0; avail <- !is.na(mat); ww <- w * avail; ww <- ww / rowSums(ww); ww[is.nan(ww)] <- 0; out <- rowSums(mat2 * ww); out[rowSums(avail) == 0] <- NA_real_; out }
 mat_of <- function(n, cost) sapply(NAMES, function(k) strat_k(k, n, "LO", cost = cost)$R)
 w <- inw("2016-01-05", "2025-12-31")
 iv_net <- sapply(W, function(n) rr_win(wt_ret(mat_of(n, "dyn"), wv), w)); iv_zero <- sapply(W, function(n) rr_win(wt_ret(mat_of(n, "zero"), wv), w))

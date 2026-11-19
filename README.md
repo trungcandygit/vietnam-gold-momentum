@@ -15,17 +15,16 @@ Run in order; each stage writes its outputs to `out/` for the next stage to read
 
 | Script | Purpose |
 |---|---|
-| `00_data_audit.R` | Sample audit: coverage, missing sessions, LOCF imputation |
-| `01_engine.R` | Core trading-rule and cost engine |
+| `00_data_audit.R` | Sample audit: coverage, missing sessions, last archived quote and LOCF tail |
+| `01_engine.R` | Core trading-rule and cost engine (sourced by the other scripts) |
 | `02_main.R` | Main results: returns, risk-return ratios, significance tests |
-| `03_robust.R` | Robustness checks (sub-periods, cost scenarios, extended windows) |
+| `03_robust.R` | Robustness checks (samples, compositions, sub-periods, cost scenarios, extended windows) |
 | `05_numbers.R` | Collects headline numbers used in the manuscript |
 | `06_xau_cost.R` | International benchmark (XAU/VND) cost sensitivity |
-| `04_figures_rdefault.R` | Figure 1 (research design) |
-| `04b_fig2_baseR.R` | Figure 2 (bid-ask spreads by segment) |
-| `04c_fig3_baseR_drawdown.R` | Figure 3 (portfolio drawdown) |
-| `04d_fig4_baseR.R` | Figure 4 (risk-return ratios and return decomposition) |
+| `07_table_A9.R` | Table A9: risk-free rate and return-definition sensitivity |
+| `08_fig2_spreads.R` | Figure 2: bid-ask spreads by segment (60-session rolling mean) |
 
+Figure 1 (research design) is a diagram drawn in the manuscript and has no script.
 Figure outputs are in `figs/`.
 
 ## Requirements
